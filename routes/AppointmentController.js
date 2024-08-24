@@ -6,6 +6,8 @@ import { errorHandler } from "../utils/errorHandler.js";
 
 let router = express.Router();
 
+const notFoundErrorMessage = 'Appointment not found';
+
 router.get('/appointments', asyncHandler(async (req, res) => {
     const appointments = await AppointmentService.getAllAppointments();
     res.json(appointments);
@@ -17,7 +19,7 @@ router.get('/appointments/:id', asyncHandler(async (req, res) => {
     if (appointment) {
         res.json(appointment);
     } else {
-        res.status(404).json({ error: "Appointment not found" });
+        res.status(404).json({ error: notFoundErrorMessage });
     }
 }));
 
@@ -34,7 +36,7 @@ router.put('/appointments/:id', asyncHandler(async (req, res) => {
     if (updatedAppointment) {
         res.json(updatedAppointment);
     } else {
-        res.status(404).json({ error: "Appointment not found" });
+        res.status(404).json({ error: notFoundErrorMessage });
     }
 }));
 
@@ -44,9 +46,23 @@ router.delete('/appointments/:id', asyncHandler(async (req, res) => {
     if (deletedAppointment) {
         res.json(deletedAppointment);
     } else {
-        res.status(404).json({ error: "Appointment not found" });
+        res.status(404).json({ error: notFoundErrorMessage });
     }
 }));
+
+router.put('/appointments/reschedule/:id', async(req, res) => {
+    const {id} = req.params;
+    const {date} = req.body;
+    let appointment = await AppointmentService.getAppointment(id);
+
+    if (!appointment) {
+        return res.status(404).json({ error: notFoundErrorMessage })
+    }
+
+    const rescheduleAppointment = await AppointmentService.updateAppointment(id, {date});
+
+    res.json(rescheduleAppointment);
+});
 
 router.use(errorHandler);
 
