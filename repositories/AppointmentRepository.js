@@ -1,4 +1,5 @@
 import { Appointment } from "../models/Appointment.js"
+import { buildAppointmentData } from "../utils/BuildDataUtils.js"
 
 const getAllAppointments = async () => {
     return await Appointment.find();
@@ -12,18 +13,18 @@ const getAppointment = async (id) => {
     }
 }
 
-const saveAppointment = async ({date, doctorId, pacientId}) => {
+const saveAppointment = async (data) => {
     try {
-        const prescription = new Appointment({date, doctorId, pacientId});
+        const prescription = new Appointment(buildAppointmentData(data));
         return await prescription.save();
     } catch (error) {
         throw new Error(error);
     }
 }
 
-const updateAppointment = async (id) => {
+const updateAppointment = async (id, data) => {
     try {
-        return await Appointment.findByIdAndUpdate(id, {date, doctorId, pacientId}, {new: true});
+        return await Appointment.findByIdAndUpdate(id, buildAppointmentData(data), {new: true});
     } catch (error) {
         throw new Error(error);
     }

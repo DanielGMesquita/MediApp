@@ -1,4 +1,5 @@
 import AppointmentRepository from "../repositories/AppointmentRepository";
+import { buildAppointmentData } from "../utils/BuildDataUtils.js"
 
 const getAllAppointments = async () => {
     return AppointmentRepository.getAllAppointments();
@@ -8,12 +9,12 @@ const getAppointment = async (id) => {
     return AppointmentRepository.getAppointment(id);
 };
 
-const saveAppointment = async ({ date, doctorId, pacientId }) => {
-    return AppointmentRepository.saveAppointment({ date, doctorId, pacientId });
+const saveAppointment = async (data) => {
+    return AppointmentRepository.saveAppointment(buildAppointmentData(data));
 };
 
-const updateAppointment = async (id, { date, doctorId, pacientId }) => {
-    return AppointmentRepository.updateAppointment(id, { date, doctorId, pacientId });
+const updateAppointment = async (id, data) => {
+    return AppointmentRepository.updateAppointment(id, buildAppointmentData(data));
 };
 
 const deleteAppointment = async (id) => {

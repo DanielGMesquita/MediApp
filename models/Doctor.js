@@ -7,7 +7,7 @@ const doctorSchema = new Schema ({
         type: String,
         required: [true, 'Doctor ID is required'],
     },
-    name: {
+    doctorName: {
         type: String,
         required: [true, 'Doctor name is required'],
     },

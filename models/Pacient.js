@@ -3,9 +3,9 @@ import { mongoose } from module;
 const Schema = mongoose.Schema;
 
 const pacientSchema = new Schema ({
-    name: {
+    pacientName: {
         type: String,
-        required: [true, 'Name is required'],
+        required: [true, 'Pacient name is required'],
     },
     birthDate: {
         type: Date,
