@@ -11,7 +11,7 @@ router.get('/pacients', asyncHandler(async (req, res) => {
     res.json(pacients);
 }));
 
-router.get('/pacients/:id', asyncHandler(async (req, res) => {
+router.get('/pacients/getPacient/:id', asyncHandler(async (req, res) => {
     const { id } = req.params;
     const pacient = await PacientService.getPacient(id);
     if (pacient) {
@@ -21,13 +21,13 @@ router.get('/pacients/:id', asyncHandler(async (req, res) => {
     }
 }));
 
-router.post('/pacients', asyncHandler(async (req, res) => {
+router.post('/pacients/createPacient', asyncHandler(async (req, res) => {
     const data = req.body;
     const pacient = await PacientService.savePacient(buildPacientData(data));
     res.status(201).json(pacient);
 }));
 
-router.put('/pacients/:id', asyncHandler(async (req, res) => {
+router.put('/pacients/updatePacient/:id', asyncHandler(async (req, res) => {
     const { id } = req.params;
     const data = req.body;
     const updatedPacient = await PacientService.updatePacient(id, buildPacientData(data));
@@ -38,7 +38,7 @@ router.put('/pacients/:id', asyncHandler(async (req, res) => {
     }
 }));
 
-router.delete('/pacients/:id', asyncHandler(async (req, res) => {
+router.delete('/pacients/deletePacient/:id', asyncHandler(async (req, res) => {
     const { id } = req.params;
     const deletedPacient = await PacientService.deletePacient(id);
     if (deletedPacient) {

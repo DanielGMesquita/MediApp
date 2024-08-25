@@ -1,4 +1,5 @@
 import express from "express";
+import bcrypt from 'bcrypt';
 import DoctorService from "../services/DoctorService.js";
 import { buildDoctorData } from "../utils/BuildDataUtils.js";
 import { asyncHandler } from "../utils/AsyncHandler.js";
@@ -11,7 +12,7 @@ router.get('/doctors', asyncHandler(async (req, res) => {
     res.json(doctors);
 }));
 
-router.get('/doctors/:id', asyncHandler(async (req, res) => {
+router.get('/doctors/getDoctor/:id', asyncHandler(async (req, res) => {
     const { id } = req.params;
     const doctor = await DoctorService.getDoctor(id);
     if (doctor) {
@@ -21,13 +22,16 @@ router.get('/doctors/:id', asyncHandler(async (req, res) => {
     }
 }));
 
-router.post('/doctors', asyncHandler(async (req, res) => {
+router.post('/doctors/createDoctor', asyncHandler(async (req, res) => {
     const data = req.body;
+
+    data.password = await bcrypt.hash(data.password, 10);
+
     const doctor = await DoctorService.saveDoctor(buildDoctorData(data));
     res.status(201).json(doctor);
 }));
 
-router.put('/doctors/:id', asyncHandler(async (req, res) => {
+router.put('/doctors/updateDoctor/:id', asyncHandler(async (req, res) => {
     const { id } = req.params;
     const data = req.body;
     const updatedDoctor = await DoctorService.updateDoctor(id, buildDoctorData(data));
@@ -38,7 +42,7 @@ router.put('/doctors/:id', asyncHandler(async (req, res) => {
     }
 }));
 
-router.delete('/doctors/:id', asyncHandler(async (req, res) => {
+router.delete('/doctors/deleteDoctor/:id', asyncHandler(async (req, res) => {
     const { id } = req.params;
     const deletedDoctor = await DoctorService.deleteDoctor(id);
     if (deletedDoctor) {
@@ -48,7 +52,7 @@ router.delete('/doctors/:id', asyncHandler(async (req, res) => {
     }
 }));
 
-router.get('/doctors/login/:login', asyncHandler(async (req, res) => {
+router.get('/doctors/checkDoctorLogin/:login', asyncHandler(async (req, res) => {
     const { login } = req.params;
     const doctor = await DoctorService.getDoctorByLogin(login);
     if (doctor) {

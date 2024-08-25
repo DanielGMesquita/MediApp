@@ -4,8 +4,8 @@ export const buildAppointmentData = ({ date, doctorId, pacientId }) => ({
     pacientId,
 });
 
-export const buildPacientData = ({ pacientName, birthDate, email, phone }) => ({
-    pacientName,
+export const buildPacientData = ({ name, birthDate, email, phone }) => ({
+    name,
     birthDate,
     email,
     phone,
@@ -19,9 +19,8 @@ export const buildPrescriptionData = ({ date, appointmentId, medicine, dosage, i
     instructions,
 });
 
-export const buildDoctorData = ({ doctorId, doctorName, login, password, email, medicalSpecialty, medicalRegistration, phone }) => ({
-    doctorId,
-    doctorName,
+export const buildDoctorData = ({ name, login, password, email, medicalSpecialty, medicalRegistration, phone }) => ({
+    name,
     login,
     password,
     email,

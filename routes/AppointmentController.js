@@ -13,7 +13,7 @@ router.get('/appointments', asyncHandler(async (req, res) => {
     res.json(appointments);
 }));
 
-router.get('/appointments/:id', asyncHandler(async (req, res) => {
+router.get('/appointments/getAppointment/:id', asyncHandler(async (req, res) => {
     const { id } = req.params;
     const appointment = await AppointmentService.getAppointment(id);
     if (appointment) {
@@ -23,13 +23,13 @@ router.get('/appointments/:id', asyncHandler(async (req, res) => {
     }
 }));
 
-router.post('/appointments', asyncHandler(async (req, res) => {
+router.post('/appointments/createAppointment', asyncHandler(async (req, res) => {
     const data = req.body;
     const appointment = await AppointmentService.saveAppointment(buildAppointmentData(data));
     res.status(201).json(appointment);
 }));
 
-router.put('/appointments/:id', asyncHandler(async (req, res) => {
+router.put('/appointments/updateAppointment/:id', asyncHandler(async (req, res) => {
     const { id } = req.params;
     const data = req.body;
     const updatedAppointment = await AppointmentService.updateAppointment(id, buildAppointmentData(data));
@@ -40,7 +40,7 @@ router.put('/appointments/:id', asyncHandler(async (req, res) => {
     }
 }));
 
-router.delete('/appointments/:id', asyncHandler(async (req, res) => {
+router.delete('/appointments/deleteAppointment/:id', asyncHandler(async (req, res) => {
     const { id } = req.params;
     const deletedAppointment = await AppointmentService.deleteAppointment(id);
     if (deletedAppointment) {
@@ -50,7 +50,7 @@ router.delete('/appointments/:id', asyncHandler(async (req, res) => {
     }
 }));
 
-router.put('/appointments/reschedule/:id', async(req, res) => {
+router.put('/appointments/rescheduleAppointment/:id', async(req, res) => {
     const {id} = req.params;
     const {date} = req.body;
     let appointment = await AppointmentService.getAppointment(id);

@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const pacientSchema = new Schema ({
-    pacientName: {
+    name: {
         type: String,
         required: [true, 'Pacient name is required'],
     },

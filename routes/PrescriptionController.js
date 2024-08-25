@@ -11,7 +11,7 @@ router.get('/presctiptions', asyncHandler(async (req, res) => {
     res.json(presctiptions);
 }));
 
-router.get('/presctiptions/:id', asyncHandler(async (req, res) => {
+router.get('/presctiptions/getPrescription/:id', asyncHandler(async (req, res) => {
     const { id } = req.params;
     const presctiption = await PresctiptionService.getPresctiption(id);
     if (presctiption) {
@@ -21,13 +21,13 @@ router.get('/presctiptions/:id', asyncHandler(async (req, res) => {
     }
 }));
 
-router.post('/presctiptions', asyncHandler(async (req, res) => {
+router.post('/presctiptions/createPrescription', asyncHandler(async (req, res) => {
     const data = req.body;
     const presctiption = await PresctiptionService.savePresctiption(buildPrescriptionData(data));
     res.status(201).json(presctiption);
 }));
 
-router.put('/presctiptions/:id', asyncHandler(async (req, res) => {
+router.put('/presctiptions/updatePrescription/:id', asyncHandler(async (req, res) => {
     const { id } = req.params;
     const data = req.body;
     const updatedPresctiption = await PresctiptionService.updatePresctiption(id, buildPrescriptionData(data));
@@ -38,7 +38,7 @@ router.put('/presctiptions/:id', asyncHandler(async (req, res) => {
     }
 }));
 
-router.delete('/presctiptions/:id', asyncHandler(async (req, res) => {
+router.delete('/presctiptions/deletePrescription:id', asyncHandler(async (req, res) => {
     const { id } = req.params;
     const deletedPresctiption = await PresctiptionService.deletePresctiption(id);
     if (deletedPresctiption) {
