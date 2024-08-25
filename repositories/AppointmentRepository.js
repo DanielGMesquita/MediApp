@@ -1,4 +1,4 @@
-import { Appointment } from "../models/Appointment.js"
+import Appointment from "../models/Appointment.js";
 import { buildAppointmentData } from "../utils/BuildDataUtils.js"
 
 const getAllAppointments = async () => {

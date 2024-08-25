@@ -1,40 +1,31 @@
-const buildAppointmentData = ({date, doctorId, pacientId}) => ({
+export const buildAppointmentData = ({ date, doctorId, pacientId }) => ({
     date,
     doctorId,
-    pacientId
+    pacientId,
 });
 
-const buildPacientData = ({pacientName, birthDate, email, phone}) => ({
+export const buildPacientData = ({ pacientName, birthDate, email, phone }) => ({
     pacientName,
     birthDate,
     email,
-    phone
+    phone,
 });
 
-const buildPrescriptionData = ({date, appointmentId, medicine, dosage, instructions}) => ({
+export const buildPrescriptionData = ({ date, appointmentId, medicine, dosage, instructions }) => ({
     date,
     appointmentId,
     medicine,
     dosage,
-    instructions
+    instructions,
 });
 
-const buildDoctorData = ({doctorId, doctorName, login, password, email, medicalSpecialty, medicalRegistration, phone}) => ({
+export const buildDoctorData = ({ doctorId, doctorName, login, password, email, medicalSpecialty, medicalRegistration, phone }) => ({
     doctorId,
     doctorName,
     login,
     password,
     email,
-    medicalRegistration,
     medicalSpecialty,
-    phone
+    medicalRegistration,
+    phone,
 });
-
-const buildDataUtils = {
-    buildDoctorData,
-    buildAppointmentData,
-    buildPacientData,
-    buildPrescriptionData
-}
-
-export default buildDataUtils;

@@ -1,8 +1,8 @@
-import { express } from "express";
-import PresctiptionService from "../services/PresctiptionService.js";
-import { buildPresctiptionData } from "../utils/BuildDataUtils.js";
-import { asyncHandler } from "../utils/asyncHandler.js";
-import { errorHandler } from "../utils/errorHandler.js";
+import express from "express";
+import PresctiptionService from "../services/PrescriptionService.js";
+import { buildPrescriptionData } from "../utils/BuildDataUtils.js";
+import { asyncHandler } from "../utils/AsyncHandler.js";
+import { errorHandler } from "../utils/ErrorHandler.js";
 
 let router = express.Router();
 
@@ -23,14 +23,14 @@ router.get('/presctiptions/:id', asyncHandler(async (req, res) => {
 
 router.post('/presctiptions', asyncHandler(async (req, res) => {
     const data = req.body;
-    const presctiption = await PresctiptionService.savePresctiption(buildPresctiptionData(data));
+    const presctiption = await PresctiptionService.savePresctiption(buildPrescriptionData(data));
     res.status(201).json(presctiption);
 }));
 
 router.put('/presctiptions/:id', asyncHandler(async (req, res) => {
     const { id } = req.params;
     const data = req.body;
-    const updatedPresctiption = await PresctiptionService.updatePresctiption(id, buildPresctiptionData(data));
+    const updatedPresctiption = await PresctiptionService.updatePresctiption(id, buildPrescriptionData(data));
     if (updatedPresctiption) {
         res.json(updatedPresctiption);
     } else {

@@ -1,8 +1,8 @@
-import { express } from "express";
+import express from "express";
 import AppointmentService from "../services/AppointmentService.js";
 import { buildAppointmentData } from "../utils/BuildDataUtils.js";
-import { asyncHandler } from "../utils/asyncHandler.js";
-import { errorHandler } from "../utils/errorHandler.js";
+import { asyncHandler } from "../utils/AsyncHandler.js";
+import { errorHandler } from "../utils/ErrorHandler.js";
 
 let router = express.Router();
 

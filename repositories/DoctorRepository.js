@@ -1,4 +1,4 @@
-import { Doctor } from "../models/Doctor.js"
+import Doctor from "../models/Doctor.js"
 import { buildDoctorData } from "../utils/BuildDataUtils.js"
 
 const getAllDoctors = async () => {

@@ -1,4 +1,4 @@
-import AppointmentRepository from "../repositories/AppointmentRepository";
+import AppointmentRepository from "../repositories/AppointmentRepository.js";
 import { buildAppointmentData } from "../utils/BuildDataUtils.js"
 
 const getAllAppointments = async () => {

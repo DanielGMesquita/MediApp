@@ -1,8 +1,8 @@
-import { express } from "express";
+import express from "express";
 import DoctorService from "../services/DoctorService.js";
 import { buildDoctorData } from "../utils/BuildDataUtils.js";
-import { asyncHandler } from "../utils/asyncHandler.js";
-import { errorHandler } from "../utils/errorHandler.js";
+import { asyncHandler } from "../utils/AsyncHandler.js";
+import { errorHandler } from "../utils/ErrorHandler.js";
 
 let router = express.Router();
 

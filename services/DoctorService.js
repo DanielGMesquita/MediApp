@@ -1,4 +1,4 @@
-import DoctorRepository from "../repositories/DoctorRepository";
+import DoctorRepository from "../repositories/DoctorRepository.js";
 import { buildDoctorData } from "../utils/BuildDataUtils.js"
 
 const getAllDoctors = async () => {

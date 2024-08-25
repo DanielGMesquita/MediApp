@@ -1,4 +1,4 @@
-import PrescriptionRepository from "../repositories/PrescriptionRepository";
+import PrescriptionRepository from "../repositories/PrescriptionRepository.js";
 import { buildPrescriptionData } from "../utils/BuildDataUtils.js"
 
 const getAllPrescriptions = async () => {

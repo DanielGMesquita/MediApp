@@ -1,4 +1,4 @@
-import { mongoose } from module;
+import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
