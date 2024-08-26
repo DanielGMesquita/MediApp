@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { validatePhone, phoneValidationMessage } from './utils/validators.js';
 
 const Schema = mongoose.Schema;
 
@@ -17,6 +18,10 @@ const pacientSchema = new Schema ({
     phone: {
         type: String,
         required: [true, 'Phone number is required'],
+        validate: {
+            validator: validatePhone,
+            message: phoneValidationMessage,
+        }
     },
     createdAt: {
         type: Date,
