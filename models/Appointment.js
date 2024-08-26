@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import Doctor from "./Doctor.js";
 import Pacient from "./Pacient.js";
-import { validateId, idValidationMessage } from './utils/validators.js';
+import { validateId, idValidationMessage } from './utils/Validators.js';
 
 const Schema = mongoose.Schema;
 

@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { validatePhone, phoneValidationMessage } from './utils/validators.js';
+import { validatePhone, phoneValidationMessage } from './utils/Validators.js';
 
 const Schema = mongoose.Schema;
 
